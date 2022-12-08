@@ -56,7 +56,7 @@ const withGroupRowAdvanced = createHigherOrderComponent( ( BlockEdit ) => {
         }
 
 		const parentClientId = wp.data.select( 'core/block-editor' ).getBlockParents( props.clientId );
-		const parentAttributes = wp.data.select('core/block-editor').getBlockAttributes( parentClientId );
+		const parentAttributes = wp.data.select('core/block-editor').getBlockAttributes( parentClientId.at(-1) );
 
 		if ( ! ( parentClientId && parentAttributes?.layout?.type === 'flex') ) {
 			return (
@@ -88,7 +88,7 @@ const withGroupRowAdvanced = createHigherOrderComponent( ( BlockEdit ) => {
 						title={ __( 'Contrôle avancé de la mise en page' ) }
 					>
 						<Flex
-						align="top"
+						align="flex-start"
 						>
 							<FlexBlock>
 								<TextControl 
